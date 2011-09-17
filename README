@@ -1,1 +1,17 @@
-EXUP readme
+README
+
+exup: a basic web application deployment script using SVN and FTP
+
+The exup script requires the following python modules:
+ - ftputil (python-ftputil)
+ - m2crypto (python-m2crypto)
+ - m2secret (available at http://www.heikkitoivonen.net/m2secret/, installable using easy_install)
+
+Setup:
+ - configure the location of your SVN repo in exupconfig.py
+ - configure the location of your FTP credentials file in exupconfig.py
+ - run "chmod +x exup.py ftpaccounteditor.py"
+
+Usage:
+ - Run "ftpaccounteditor.py" to add, edit or display FTP account information
+ - Run "exup.py" to run an export
