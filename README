@@ -9,9 +9,9 @@ The exup script requires the following python modules:
 
 Setup:
  - configure the location of your SVN repo in exupconfig.py
- - configure the location of your FTP credentials file in exupconfig.py
+ - configure the location of your FTP credentials file in exupconfig.py (can be a nonexistent file)
  - run "chmod +x exup.py ftpaccounteditor.py"
 
 Usage:
  - Run "ftpaccounteditor.py" to add, edit or display FTP account information
- - Run "exup.py" to run an export
+ - Run "exup.py" to run an export + upload (deploy)
