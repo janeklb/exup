@@ -50,7 +50,7 @@ def main():
 		ftphost = config.get(repo,'host')
 		ftpuser = config.get(repo,'user')
 
-		secretkey = raw_input('Enter a decryption key for the FTP password (or blank for unencrypted): ')
+		secretkey = raw_input('Enter your encryption key for the FTP password (or blank for unencrypted): ')
 		if secretkey:
 			secret = m2secret.Secret()
 			secret.deserialize(config.get(repo,'pass'))
