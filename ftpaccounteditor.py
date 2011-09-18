@@ -1,11 +1,11 @@
 #!/usr/bin/python
 
-import sys, ConfigParser, m2secret, traceback, exupconfig, ftplib, ftputil
+import sys, ConfigParser, m2secret, traceback, exupconfig, ftputil
 
 class FTPAccountEditor:
 
 	def __init__(self):
-		self.FTPOPTIONS 	= { 'host': False, 'user': False, 'pass': True, 'path': False }
+		self.FTPOPTIONS 	= { 'user': False, 'pass': True, 'host': False, 'path': False }
 		self.hasedits 		= False
 
 		self.configfile 	= exupconfig.FTPCONFIGFILE
@@ -76,7 +76,7 @@ class FTPAccountEditor:
 			print "Unable to connect using specified parameters -- options for " + repo + " will not be saved. Please try again."
 		else:
 			self.config.add_section(repo)
-			for option, value in options:
+			for option, value in options.iteritems():
 				self.config.set(repo, option, value)
 			self.hasedits = True
 			print "Added settings for " + repo + ". Changes won't be saved until exit."
@@ -88,7 +88,7 @@ class FTPAccountEditor:
 			print "This repository doesn't have any FTP info"
 			return
 			
-		for o in self.config.items():
+		for o in self.config.items(section):
 			option = o[0]
 			value = o[1]
 			if self.is_option(option) and self.FTPOPTIONS[option] == True and self.secretkey:
@@ -113,7 +113,12 @@ class FTPAccountEditor:
 				elif command == 'q':
 
 					if self.hasedits:
-						if raw_input('Would you like to save changes to ' + configfile + '? [Y/N]').lowercase() == 'y':
+						while True:
+							dosave = raw_input('Would you like to save changes to ' + self.configfile + '? [Y/N] ')
+							if dosave:
+								break
+						
+						if dosave.lower() == 'y':
 							self.configfilefp.close()
 
 							with open(self.configfile, 'wb') as self.configfilefp:
