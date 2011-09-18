@@ -23,9 +23,9 @@ class ExUp:
 		
 		svnpath = "file://" + exupconfig.REPOROOT + repo
 	
-		branch = raw_input('Enter the branch (blank for trunk): ')
-		if branch:
-			svnpath += "/branches/" + branch
+		tag = raw_input('Enter the tag (blank for trunk): ')
+		if tag:
+			svnpath += "/tag/" + tag
 		else:
 			svnpath += "/trunk"
 	
@@ -43,7 +43,7 @@ class ExUp:
 	
 			ftpconfigfile = exupconfig.FTPCONFIGFILE
 			
-			newfile = raw_input('Specify config file (or blank for ' + ftpconfigfile + ')')
+			newfile = raw_input('Specify config file (or blank for ' + ftpconfigfile + '): ')
 			if newfile:
 				ftpconfigfile = newfile
 			
