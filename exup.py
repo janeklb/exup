@@ -1,10 +1,5 @@
 #!/usr/bin/python
 
-# The exup script requires the following python modules:
-#  ftputil (python-ftputil)
-#  m2crypto (python-m2crypto)
-#  m2secret (available at http://www.heikkitoivonen.net/m2secret/)
-
 from subprocess import call
 import sys, os, ftputil, shutil, ConfigParser, m2secret, exupconfig
 
