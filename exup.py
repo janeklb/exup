@@ -36,14 +36,8 @@ class ExUp:
 				print "SVN export failed."
 				return 1
 	
-			ftpconfigfile = exupconfig.FTPCONFIGFILE
-			
-			newfile = raw_input('Specify config file (or blank for ' + ftpconfigfile + '): ')
-			if newfile:
-				ftpconfigfile = newfile
-			
 			config = ConfigParser.RawConfigParser()
-			config.readfp(open(ftpconfigfile))
+			config.readfp(open(exupconfig.FTPCONFIGFILE))
 			ftphost = config.get(repo,'host')
 			ftpuser = config.get(repo,'user')
 	
