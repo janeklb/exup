@@ -69,8 +69,8 @@ class ExUp:
 					prefix = prefix[1:] + '/'
 			
 				for d in dirs:
-					if not host.path.isdir(spath + d):
-						host.makedirs(spath + d)
+					if not host.path.isdir(spath + prefix + d):
+						host.makedirs(spath + prefix + d)
 						print "created directory", spath + d
 	
 				for f in files:
